@@ -21,14 +21,17 @@ class Field:
 
 
 class Name(Field):
-    pass
-
+    def __init__(self, name):
+        super().__init__(name)
+    def __str__(self):
+        return str(self.value)
 
 class Phone(Field):
     def validate(self, value):
         if not value.isdigit() or len(value) != 9:
             raise ValueError("Invalid phone number. It should contain 9 digits.")
-
+    def __str__(self):
+        return str(self.value)
 
 class Birthday(Field):
     def validate(self, value):
